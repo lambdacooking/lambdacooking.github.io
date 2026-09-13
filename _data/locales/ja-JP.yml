@@ -35,10 +35,9 @@ copyright:
     link: https://creativecommons.org/licenses/by/4.0/
 
   # Displayed in the footer
-  brief: Some rights reserved.
+  brief: 一部の権利を保有しています。
   verbose: >-
-    Except where otherwise noted, the blog posts on this site are licensed
-    under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
+    特に記載のない限り、このサイトの記事にはクリエイティブ・コモンズ 表示 4.0 国際（CC BY 4.0）ライセンスが適用されます。
 
 meta: :PLATFORM 用の :THEME を使用しています。
 
@@ -67,6 +66,7 @@ post:
     prompt: で読めます
   edit: この投稿を編集
   relate_posts: さらに読む
+  pin_prompt: 固定表示
   share: シェア
   button:
     next: 次
@@ -84,7 +84,29 @@ df:
     strftime: "%Y/%m/%d"
     dayjs: "YYYY/MM/DD"
 
+  archives:
+    strftime: "%m月"
+    dayjs: "M月"
+
 # categories page
 categories:
   category_measure: カテゴリー
   post_measure: 投稿
+
+language: 言語
+
+accessibility:
+  sidebar: サイドバー
+  switch_mode: 表示モードを切り替え
+  main: メインコンテンツ
+  panel: 補足情報
+  top: ページの先頭へ
+  close: 閉じる
+  pages: ページナビゲーション
+  site_info: サイト情報
+  top_bar: トップバー
+  breadcrumb: パンくずリスト
+  search: 検索
+  posts: 投稿ナビゲーション
+  copy_link: リンクをコピー
+not_found_title: "404: ページが見つかりません"

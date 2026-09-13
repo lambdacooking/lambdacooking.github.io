@@ -7,6 +7,10 @@ function verifyUrl(url) {
   const requestUrl = new URL(url);
   const requestPath = requestUrl.pathname;
 
+  if (!requestUrl.href.startsWith(self.registration.scope)) {
+    return false;
+  }
+
   if (!requestUrl.protocol.startsWith('http')) {
     return false;
   }
@@ -42,6 +46,9 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keyList) => {
       return Promise.all(
         keyList.map((key) => {
+          if (!key.startsWith(swconf.cachePrefix)) {
+            return;
+          }
           if (purge) {
             return caches.delete(key);
           } else {
@@ -62,12 +69,12 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.headers.has('range')) {
+  if (purge || event.request.headers.has('range')) {
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then((response) => {
+    caches.open(swconf.cacheName).then((cache) => cache.match(event.request)).then((response) => {
       if (response) {
         return response;
       }

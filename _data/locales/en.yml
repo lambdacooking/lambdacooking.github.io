@@ -95,3 +95,21 @@ categories:
   post_measure:
     singular: post
     plural: posts
+
+language: Language
+
+accessibility:
+  sidebar: Sidebar
+  switch_mode: Switch Mode
+  main: Main Content
+  panel: Panel
+  top: Scroll to Top
+  close: Close
+  pages: Page Navigation
+  site_info: Site Info
+  top_bar: Top Bar
+  breadcrumb: Breadcrumb
+  search: Search
+  posts: Post Navigation
+  copy_link: Copy link
+not_found_title: "404: Page not found"

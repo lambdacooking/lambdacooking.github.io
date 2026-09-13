@@ -1,6 +1,6 @@
 <!-- The Side Bar -->
 
-<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+<aside aria-label="{{ site.data.locales[lang].accessibility.sidebar }}" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
     <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
       {%- if site.avatar != empty and site.avatar -%}
@@ -13,6 +13,11 @@
 
     <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+    <div class="mt-3" aria-label="{{ site.data.locales[include.lang].language }}">
+      <a href="/jp/" lang="ja" hreflang="ja"{% if site.post_language == 'jp' %} aria-current="true"{% endif %}>日本語</a>
+      <span aria-hidden="true"> / </span>
+      <a href="/en/" lang="en" hreflang="en"{% if site.post_language == 'en' %} aria-current="true"{% endif %}>English</a>
+    </div>
   </header>
   <!-- .profile-wrapper -->
 
@@ -58,7 +63,7 @@
         <button
           type="button"
           class="btn btn-link nav-link"
-          aria-label="Switch Mode"
+          aria-label="{{ site.data.locales[lang].accessibility.switch_mode }}"
           id="mode-toggle"
           data-bs-toggle="dropdown"
         >

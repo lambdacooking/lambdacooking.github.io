@@ -75,3 +75,21 @@ This project is licensed under the [MIT License][license].
 [contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
 [contributors-avatar]: https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16&max=112
 [lib]: https://github.com/cotes2020/chirpy-static-assets
+
+## Language editions
+
+The public site is built twice: Japanese at `/jp/` (the default) and English at
+`/en/`. `/` redirects to `/jp/`. Use `bash tools/build-languages.sh` after
+`bundle install`, `npm install`, and `npm run build` to produce the complete
+Pages artifact in `_site`. Check it with `bundle exec ruby tools/test-languages.rb`
+and `bundle exec htmlproofer _site --disable-external`.
+
+Keep Japanese posts in `_posts/jp/` and English posts in `_posts/en/`, following
+the existing file format. Each build excludes the other language before Jekyll
+reads posts, so home pagination, categories, tags, archives, search, related
+posts and previous/next links are isolated. The build supplies the language
+prefix and normalizes UI locale metadata; existing post source files do not
+need changes. Shared site text uses `_data/locales/ja-JP.yml` and
+`_data/locales/en.yml`; English site settings override `_config.yml` through
+`_config.en.yml`. To preview one edition, use `bundle exec jekyll serve` for
+Japanese, or add `--config _config.yml,_config.en.yml` for English.
