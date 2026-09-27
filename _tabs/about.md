@@ -5,7 +5,7 @@ order: 4
 ---
 
 {% if site.post_language == 'jp' %}
-**Snak Chocopie**です。ネットワークとセキュリティについて発信しています。
+**SnackChocopie**です。ネットワークとセキュリティについて発信しています。
 {% else %}
-I’m **Snak Chocopie**. I write about networks and security.
+I’m **SnackChocopie**. I write about networks and security.
 {% endif %}
