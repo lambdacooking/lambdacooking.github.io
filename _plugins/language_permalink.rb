@@ -5,9 +5,9 @@
 [:after_init, :after_reset].each do |event|
   Jekyll::Hooks.register :site, event do |site|
     language = site.config.fetch('post_language')
-    raise "Unsupported post language: #{language}" unless %w[en jp].include?(language)
+    raise "Unsupported post language: #{language}" unless %w[en jp ko].include?(language)
 
-    site.exclude |= ["_posts/#{language == 'jp' ? 'en' : 'jp'}"]
+    site.exclude |= (%w[jp en ko] - [language]).map { |other| "_posts/#{other}" }
   end
 end
 
@@ -18,7 +18,7 @@ Jekyll::Hooks.register :site, :post_read do |site|
 
   site.posts.docs.each do |post|
     post.data['lang'] = site.config['lang']
-    # baseurl supplies /jp or /en. Keep the existing public post URLs while
+    # baseurl supplies /jp, /en or /ko. Keep the existing public post URLs while
     # leaving the source front matter and post bodies untouched.
     post.data['permalink'] = "/#{post.data['slug']}/"
   end

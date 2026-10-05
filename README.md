@@ -78,18 +78,20 @@ This project is licensed under the [MIT License][license].
 
 ## Language editions
 
-The public site is built twice: Japanese at `/jp/` (the default) and English at
-`/en/`. `/` redirects to `/jp/`. Use `bash tools/build-languages.sh` after
+The public site is built in three editions: Japanese at `/jp/` (the default), English at
+`/en/`, and Korean at `/ko/`. `/` redirects to `/jp/`. Use `bash tools/build-languages.sh` after
 `bundle install`, `npm install`, and `npm run build` to produce the complete
 Pages artifact in `_site`. Check it with `bundle exec ruby tools/test-languages.rb`
 and `bundle exec htmlproofer _site --disable-external`.
 
-Keep Japanese posts in `_posts/jp/` and English posts in `_posts/en/`, following
-the existing file format. Each build excludes the other language before Jekyll
+Keep Japanese posts in `_posts/jp/`, English posts in `_posts/en/`, and Korean
+posts in `_posts/ko/`, following
+the existing file format. Each build excludes the other languages before Jekyll
 reads posts, so home pagination, categories, tags, archives, search, related
 posts and previous/next links are isolated. The build supplies the language
 prefix and normalizes UI locale metadata; existing post source files do not
 need changes. Shared site text uses `_data/locales/ja-JP.yml` and
-`_data/locales/en.yml`; English site settings override `_config.yml` through
-`_config.en.yml`. To preview one edition, use `bundle exec jekyll serve` for
-Japanese, or add `--config _config.yml,_config.en.yml` for English.
+`_data/locales/en.yml`, and `_data/locales/ko-KR.yml`; English and Korean site
+settings override `_config.yml` through `_config.en.yml` and `_config.ko.yml`. To preview one edition, use `bundle exec jekyll serve` for
+Japanese, or add `--config _config.yml,_config.en.yml` for English or
+`--config _config.yml,_config.ko.yml` for Korean.
